@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.28917.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorSS", "BlazorSS\BlazorSS.csproj", "{44B10745-2477-48FF-BE26-DA4DA600E7F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backend", "backend\backend.csproj", "{45362C49-C887-4E7C-B59D-3D8B35579BAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend", "backend\Backend.csproj", "{45362C49-C887-4E7C-B59D-3D8B35579BAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{8155FBAF-B975-4841-91AF-0EA5271FFB77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{8155FBAF-B975-4841-91AF-0EA5271FFB77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
