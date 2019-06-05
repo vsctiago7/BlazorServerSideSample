@@ -6,7 +6,7 @@
 
 <p>This component demonstrates fetching data from a service.</p>
 
-@if (forecasts == null)
+@if (todos == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -15,20 +15,16 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>ID</th>
+                <th>Name</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var todo in todos)
             {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
+                    <td>@todo.Id</td>
+                    <td>@todo.Name</td>
                 </tr>
             }
         </tbody>
@@ -36,10 +32,10 @@ else
 }
 
 @functions {
-    WeatherForecast[] forecasts;
+    List<Domain.Todo> todos;
 
     protected override async Task OnInitAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        todos = await ForecastService.GetForecastAsync(DateTime.Now);
     }
 }

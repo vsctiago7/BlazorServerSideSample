@@ -1,5 +1,9 @@
+using Domain;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace BlazorSS.Data
@@ -11,15 +15,18 @@ namespace BlazorSS.Data
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
+        public async Task<List<Todo>> GetForecastAsync(DateTime startDate)
         {
-            var rng = new Random();
-            return Task.FromResult(Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            HttpClient client = new HttpClient();
+            var path = @"https://localhost:44346/api/todo";
+            HttpResponseMessage response = client.GetAsync(path).Result;
+            string json = "";
+            if (response.IsSuccessStatusCode)
             {
-                Date = startDate.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            }).ToArray());
+                json =  response.Content.ReadAsStringAsync().Result;
+            }
+            return JsonConvert.DeserializeObject<List<Todo>>(json);
+
         }
     }
 }
